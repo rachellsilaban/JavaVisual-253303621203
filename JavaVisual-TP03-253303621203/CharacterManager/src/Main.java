@@ -1,0 +1,57 @@
+import com.unpri.charactermanager.model.Character;     
+import com.unpri.charactermanager.model.CharacterType; 
+
+public class Main {
+public static void main(String[] args) {              // method main: titik awal eksekusi program
+
+        System.out.println("=== Character Manager v0.1 ===");
+
+        // Membuat 3 object Character menggunakan constructor pertama
+        Character hero = new Character("Arjuna", CharacterType.WARRIOR, 5);
+        Character wizard = new Character("Merlin", CharacterType.MAGE, 3);
+        Character scout = new Character("Athena", CharacterType.ARCHER, 4);
+
+        // Menampilkan ketiganya menggunakan toString()
+        System.out.println(hero);
+        System.out.println(wizard);
+        System.out.println(scout);
+
+        System.out.println();
+        System.out.println(">> " + hero.getName() + " level up!");
+        hero.setLevel(hero.getLevel() + 1);     // naik 1 level, HP & Attack dihitung ulang otomatis
+        System.out.println("After level up: " + hero);
+
+        System.out.println();
+        System.out.println(">> Nama karakter: " + hero.getName());
+        System.out.println(">> Jenis karakter: " + hero.getType());
+        System.out.println(">> HP saat ini: " + hero.getHitPoints());
+    
+        System.out.println();
+        System.out.println("=== Demo Mini-Challenge ===");
+
+        // Membuat karakter baru
+        Character newCharacter = new Character(
+            "Gandalf", CharacterType.MAGE, 7
+        );
+
+        // Mengatur mana karakter
+        newCharacter.setMana(100);
+
+        // Menampilkan informasi karakter
+        System.out.println(newCharacter);
+
+        // Mengecek apakah karakter masih hidup
+        System.out.println(
+            "Apakah " + newCharacter.getName() +
+            " masih hidup? " + newCharacter.isAlive()
+        );
+
+        System.out.println();
+        System.out.println("=== Demo Validasi Mana ===");
+            try {
+                newCharacter.setMana(-10);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Validasi berhasil: " + e.getMessage());
+            }
+    }
+}
